@@ -8,23 +8,17 @@ There are two ways to use this plugin depending on whether you want line breaks 
 
 The "light" version is used this way:
 
-    {exp:xhtml:light}
-
-        text you want processed
-
-    {/exp:xhtml:light}
-
+	{exp:xhtml:light}
+		text you want processed
+	{/exp:xhtml:light}
 
 The full version like this:
 
-    {exp:xhtml:full}
-
-        text you want processed
-
-    {/exp:xhtml:full}
-
+	{exp:xhtml:full}
+		text you want processed
+	{/exp:xhtml:full}
 
 ## Change Log
 
-- Version 1.1
-    - Updated plugin to be 2.0 compatible
+- 1.1
+	- Updated plugin to be 2.0 compatible
