@@ -24,7 +24,7 @@ The full version like this:
     {/exp:xhtml:full}
 
 
-Version 1.1
-******************
-- Updated plugin to be 2.0 compatible
+## Change Log
 
+- Version 1.1
+    - Updated plugin to be 2.0 compatible
