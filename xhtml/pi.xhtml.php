@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /*
-Copyright (C) 2005 - 2011 EllisLab, Inc.
+Copyright (C) 2005 - 2015 EllisLab, Inc.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -25,28 +25,19 @@ used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization from EllisLab, Inc.
 */
 
-$plugin_info = array(
-						'pi_name'			=> 'XHTML',
-						'pi_version'		=> '1.1',
-						'pi_author'			=> 'Rick Ellis',
-						'pi_author_url'		=> 'http://www.expressionengine.com/',
-						'pi_description'	=> 'XHTML Typography Plugin',
-						'pi_usage'			=> Xhtml::usage()
-					);
-
 /**
  * Xhtml Class
  *
  * @package			ExpressionEngine
  * @category		Plugin
- * @author			ExpressionEngine Dev Team
- * @copyright		Copyright (c) 2005 - 2011, EllisLab, Inc.
- * @link			http://expressionengine.com/downloads/details/xhtml_typography/
+ * @author			EllisLab
+ * @copyright		Copyright (c) 2004 - 2015, EllisLab, Inc.
+ * @link			https://github.com/EllisLab/Xhtml
  */
 class Xhtml {
 
-	var $return_data;
-	
+	public $return_data;
+
 	/**
 	* Light xhtml
 	*
@@ -56,18 +47,16 @@ class Xhtml {
 	*/
 	function light($str = '')
 	{
-		$EE =& get_instance();
-		
 		if ($str == '')
 		{
-			$str = $EE->TMPL->tagdata;
+			$str = ee()->TMPL->tagdata;
 		}
-		
-		$EE->load->library('typography');
-		return $EE->typography->format_characters($str);
+
+		ee()->load->library('typography');
+		return ee()->typography->format_characters($str);
 	}
 
-	// --------------------------------------------------------------------		   
+	// --------------------------------------------------------------------
 
 	/**
 	* Full xhtml
@@ -79,69 +68,12 @@ class Xhtml {
 	function full($str = '')
 	{
 		$EE =& get_instance();
-		
-		$str = ($str == '') ? $EE->TMPL->tagdata : $str;
-		
-		$EE->load->library('typography');
-		return $EE->typography->auto_typography($str);
-	}
-	  
-	// --------------------------------------------------------------------
-	
-	/**
-	* Usage
-	*
-	* Plugin Usage
-	*
-	* @access	public
-	* @return	string
-	*/
-	function usage()
-	{
-		ob_start(); 
-		?>
-		This plugin converts certain characters into typographically correct entities.
 
-		Quotes are converted to curly quotes, hyphens into em-dashes, three periods into elipsis, etc.
+		$str = ($str == '') ? ee()->TMPL->tagdata : $str;
 
-		There are two ways to use this plugin depending on whether you want line breaks turned into &lt;p&gt; tags.
-
-		The "light" version is used this way:
-
-		{exp:xhtml:light}
-
-		text you want processed
-
-		{/exp:xhtml:light}
-
-
-		The full version like this:
-
-		{exp:xhtml:full}
-
-		text you want processed
-
-		{/exp:xhtml:full}
-
-
-		Version 1.1
-		******************
-		- Updated plugin to be 2.0 compatible
-
-
-		<?php
-		$buffer = ob_get_contents();
-	
-		ob_end_clean(); 
-
-		return $buffer;
+		ee()->load->library('typography');
+		return ee()->typography->auto_typography($str);
 	}
 
 	// --------------------------------------------------------------------
-
 }
-// END CLASS
-
-/* End of file pi.xhtml.php */
-/* Location: ./system/expressionengine/third_party/xhtml/pi.xhtml.php */
-
