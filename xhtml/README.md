@@ -30,6 +30,11 @@ There are two ways to use this plugin depending on whether you want line breaks 
 
 ## Change Log
 
+### 2.1
+
+- Updated license and author information
+- Removed old $EE reference
+
 ### 2.0
 
 - Updated plugin to be 3.0 compatible
